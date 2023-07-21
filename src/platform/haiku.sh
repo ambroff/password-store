@@ -2,7 +2,7 @@
 
 clip() {
 	local sleep_argv0="password store sleep for user $(id -u)"
-	pkill -f "^sleep_argv0" >/dev/null && sleep 0.5
+	kill -TERM "$sleep_argv0" >/dev/null 2>&1 && sleep 0.5
 	local before="$(clipboard -p | $BASE64)"
 	echo -n "$1" | clipboard -i
 	(
